@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+</br>
+	<div class="container">
+		<div class="row">
+			<div class="card">
+				<div class="header">
+				</br>
+					<a class="btn btn-success" href="{% url 'sinkron_berita' %}">+ sinkron berita</a>
+				</div>
+				<div class="body">
+					<table class="table">
+						<thead>
+						  <tr>
+							<th scope="col">#</th>
+							<th scope="col">Title</th>
+							<th scope="col">Author</th>
+							<th scope="col">Time</th>
+							<th scope="col">Action</th>
+						  </tr>
+						</thead>
+						<tbody>
+							{% for b in berita  %}
+							<tr>
+								<th scope="row">{{ forloop.counter }}</th>
+								<td>{{ b.title }}</td>
+								<td>{{ b.author }}</td>
+								<td>
+									{% if b.time %}
+										{{ b.time }}
+									{% else %}
+										-
+									{% endif %}
+								</td>
+								<td>
+									<a class="btn btn-danger" href="{% url 'berita_detil' b.title %}">lihat</a>
+								</td>
+								
+							</tr>
+							{% endfor %}
+						</tbody>
+					  </table>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+{% endblock content %}
+	
